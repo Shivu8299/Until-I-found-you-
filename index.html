@@ -30,8 +30,8 @@
       border-radius: 12px;
       text-align: center;
       
-      /* Width for the vertical video frame */
-      width: 350px; 
+      /* FIX: Adjusted width for a 4:5 video */
+      width: 400px; 
       height: auto;
       position: relative;
     }
@@ -47,8 +47,8 @@
 
     .video-screen-wrapper {
         width: 100%;
-        /* 9:16 aspect ratio hack (16/9 * 100% = 177.77%) */
-        padding-bottom: 177.77%; 
+        /* FIX: 4:5 aspect ratio hack: padding-bottom = 5/4 * 100% = 125% */
+        padding-bottom: 125%; 
         height: 0;
         position: relative;
         overflow: hidden;
@@ -70,12 +70,14 @@
     .video-player {
       width: 100%;
       height: 100%;
-      /* 'contain' ensures NO content is cut off */
-      object-fit: contain; 
+      /* FIX: Changed back to 'cover'. Since the container is now 4:5, 
+         this will fill the space without black bars. */
+      object-fit: cover; 
       border-radius: 6px;
     }
 
-    /* Retro scanline effect (optional) */
+    /* Scan lines, Vignette, and Caption styles remain the same... */
+
     .scan-lines {
       position: absolute;
       top: 0;
@@ -92,7 +94,6 @@
       pointer-events: none;
     }
 
-    /* Vignette effect */
     .vignette {
       position: absolute;
       top: 0;
